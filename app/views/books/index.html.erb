@@ -1,6 +1,12 @@
-<html>
+<html><!--全ての本-->
   <body>
     <main>
+      <div>
+        <%= render 'users/shared', user: current_user %>
+      </div>
+      <div>
+        <%= render 'books/new', books: @books %>
+      </div>
       <h2>Books</h2>
       <table>
         <thead>
@@ -11,12 +17,12 @@
         </thead>
 
         <tbody>
-          <% @book.each do |book| %>
+          <% @books.each do |book| %>
             <tr>
-              <%#= link_to book_path(book.id) do %>
-                <%#= image_tag book.get_image %>
-              <%# end %>
-              <td><%#= image_tag 'no_image.jpg' %></td>
+              <%= link_to book_path(book.id) do %>
+                <%= image_tag book.user.get_profile_image(50,50) %>
+              <% end %>
+              
               <td>
                 <span>
                   <%= link_to book.title, book_path(book.id) %>

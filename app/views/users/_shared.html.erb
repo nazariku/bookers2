@@ -1,0 +1,25 @@
+<html><!--左上テンプレート-->
+  <body>
+    <h2>User info</h2>
+
+      <%= image_tag user.get_profile_image(100, 100) %>
+      
+    <div>
+     
+
+    <table>
+      <tbody>
+        <tr>
+          <th>name</th>
+          <th><%= user.name %></th>
+        </tr>
+        <tr>
+          <th>introduction</th>
+        </tr>
+      </tbody>
+    </table>
+    <div><%= link_to "編集", edit_user_path(current_user) %></div>
+
+    </div>
+  </body>
+</html>

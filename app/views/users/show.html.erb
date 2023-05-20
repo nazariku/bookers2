@@ -1,5 +1,39 @@
+<!--特定のユーザーの（id）投稿一覧sign_upのリダイレクト先-->
 <html>
   <body>
-    User info
+    <main>
+      <div>
+        <%= render 'users/shared', user: current_user %>
+      </div>
+      <div>
+        <%= render 'books/new', books: @books %>
+      </div>
+      <h2>Books</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Opinion</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @books.each do |book| %>
+            <tr>
+              <%= link_to book_path(book.id) do %>
+                <%= image_tag book.user.get_profile_image(50,50) %>
+              <% end %>
+
+              <td>
+                <span>
+                  <%= link_to book.title, book_path(book.id) %>
+                </span>
+              </td>
+              <td><%= book.body %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </main>
   </body>
 </html>

@@ -1,0 +1,30 @@
+<html><!--user一覧 -->
+  <body>
+    <main>
+      <div>
+        <div>
+        <%= render 'users/sss', user: current_user %>
+        </div>
+        <div>
+        <%= render 'books/new', books: @book %>
+        </div>
+        <h2>Users</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>image</th>
+              <th>name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>ユーザー画像</td>
+              <td>name</td>
+              <td>Show</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </body>
+</html>

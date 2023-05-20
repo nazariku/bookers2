@@ -1,10 +1,7 @@
 class BooksController < ApplicationController
-  def new
-    @book = Book.new
-  end
 
   def index
-    @book = Book.all
+    @books = Book.all
   end
 
   def show
@@ -12,7 +9,7 @@ class BooksController < ApplicationController
   end
 
   def edit
-
+    @book = Book.find(params[:id])
   end
 
   def create
@@ -23,13 +20,15 @@ class BooksController < ApplicationController
   end
 
   def update
-
+    book = Book.find(params[:id])
+    book.update(book_params)#ストロングパラメータ、userモデルのname,profileのカラムの保存を許可する
+    redirect_to user_path(user.id)
   end
 
   def destroy
     book = Book.find(params[:id])
     book.destroy
-    redirect_to books_path
+    redirect_to user_path
   end
 
   private

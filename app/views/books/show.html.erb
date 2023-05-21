@@ -7,15 +7,15 @@
           <tbody>
             <tr>
               <td>
-                投稿ユーザー画像：<%#= image_tag 'no_image.jpg' %>
-                ユーザーネーム：<%= book.user.name %>
+                <%= image_tag @book.user.get_profile_image(50,50) %>
+                <%= @book.user.name %>
               </td>
-              <td>タイトル：<%= book.title %></td>
-              <td>内容：<%= book.body %></td>
-              <td>Edit</td>
+              <td><%= @book.title %></td>
+              <td><%= @book.body %></td>
+              <td><%= link_to "Edit", edit_book_path(@book) %></td>
               <td>
-                <% if book.user == current_user %>
-                  <%= link_to "Destroy", book_path(@book), method: :delete %>
+                <% if @book.user == current_user %>
+                  <%= link_to "Destroy", @book, method: :delete %>
                 <% end %>
               </td>
             </tr>

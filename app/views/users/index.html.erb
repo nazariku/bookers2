@@ -3,10 +3,10 @@
     <main>
       <div>
         <div>
-        <%= render 'users/sss', user: current_user %>
+          <%= render 'users/shared', user: current_user %>
         </div>
         <div>
-        <%= render 'books/new', books: @book %>
+          <%= render 'books/new', books: @book %>
         </div>
         <h2>Users</h2>
         <table>
@@ -16,13 +16,16 @@
               <th>name</th>
             </tr>
           </thead>
+          <% @users.each do |user| %>
           <tbody>
             <tr>
-              <td>ユーザー画像</td>
-              <td>name</td>
-              <td>Show</td>
+              <td><%= image_tag user.get_profile_image(50,50) %></td>
+
+              <td><%= user.name %></td>
+              <td><%= link_to "Show", user_path(user) %></td>
             </tr>
           </tbody>
+          <% end %>
         </table>
       </div>
     </main>

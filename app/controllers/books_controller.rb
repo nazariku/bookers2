@@ -22,13 +22,13 @@ class BooksController < ApplicationController
   def update
     book = Book.find(params[:id])
     book.update(book_params)#ストロングパラメータ、userモデルのname,profileのカラムの保存を許可する
-    redirect_to user_path(user.id)
+    redirect_to book_path(user.id)
   end
 
   def destroy
     book = Book.find(params[:id])
     book.destroy
-    redirect_to user_path
+    redirect_to books_path
   end
 
   private

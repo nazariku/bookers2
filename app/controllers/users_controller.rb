@@ -41,6 +41,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :profile_image)#ストロングパラメータ、userモデルのname,profileのカラムの保存を許可する
+    params.require(:user).permit(:name, :profile_image, :introduction)#ストロングパラメータ、userモデルのname,profileのカラムの保存を許可する
   end
 end

@@ -1,15 +1,14 @@
 <html><!--user一覧 -->
   <body>
     <main>
-      <div>
-        <div>
+      <div class="container px-5 px-sm-0">
+        <div class="row">
+          <div class="col-md-3">
           <%= render 'users/shared', user: current_user %>
         </div>
-        <div>
-          <%= render 'books/new', books: @book %>
-        </div>
+       <div class="col-md-8 offset-md-1">
         <h2>Users</h2>
-        <table>
+        <table class="table">
           <thead>
             <tr>
               <th>image</th>
@@ -27,6 +26,8 @@
           </tbody>
           <% end %>
         </table>
+      </div>
+      </div>
       </div>
     </main>
   </body>

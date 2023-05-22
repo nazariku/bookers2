@@ -1,14 +1,20 @@
 <html><!--user/show/から飛べる-->
   <body>
     <main>
-      <div>
+       <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <%= render 'users/shared', user: current_user %>
+          </div>
+
+            <div class="col-md-8 offset-md-1">
         <h2>Book detail</h2>
-        <table>
+        <table class="table">
           <tbody>
             <tr>
               <td>
                 <%= image_tag @book.user.get_profile_image(50,50) %>
-                <%= @book.user.name %>
+                <br><%= link_to @book.user.name, user_path(current_user) %>
               </td>
               <td><%= @book.title %></td>
               <td><%= @book.body %></td>
@@ -21,6 +27,8 @@
             </tr>
           </tbody>
         </table>
+        </div>
+        </div>
       </div>
     </main>
   </body>

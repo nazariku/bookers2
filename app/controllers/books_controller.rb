@@ -15,14 +15,24 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
-    @book.save
-    redirect_to books_path
+    if @book.save
+      flash[:notice] = "successfully"
+      redirect_to book_path(@book)
+    else
+      flash.now[:alert] = "error"
+      render :index
+    end
   end
 
   def update
     book = Book.find(params[:id])
-    book.update(book_params)#ストロングパラメータ、userモデルのname,profileのカラムの保存を許可する
+    if book.update(book_params)#ストロングパラメータ、userモデルのname,profileのカラムの保存を許可する
+       flash[:notice] = "successfully"
     redirect_to book_path(user.id)
+    else
+      flash.now[:alert] = "error"
+      render edit_book_path(current_user)
+    end
   end
 
   def destroy

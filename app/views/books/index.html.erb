@@ -1,6 +1,7 @@
 <html><!--全ての本-->
   <body>
     <main>
+      <p id="notice"><%= flash[:alert] %></p>
        <div class="container px-5 px-sm-0">
         <div class="row">
           <div class="col-md-3">
@@ -17,7 +18,7 @@
         </thead>
 
         <tbody>
-          <% @books.each do |book| %>
+          <% Book.all.each do |book| %>
             <tr>
               <%= link_to book_path(book.id) do %>
                 <%= image_tag book.user.get_profile_image(50,50) %>

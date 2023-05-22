@@ -12,6 +12,7 @@
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
+            <th></th>
             <th>Title</th>
             <th>Opinion</th>
           </tr>
@@ -20,9 +21,11 @@
         <tbody>
           <% Book.all.each do |book| %>
             <tr>
+              <td>
               <%= link_to book_path(book.id) do %>
                 <%= image_tag book.user.get_profile_image(50,50) %>
               <% end %>
+              </td>
 
               <td>
                 <span>

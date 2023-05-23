@@ -12,12 +12,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-     user = User.find(params[:id])
-  unless user.id == current_user.id
-    redirect_to books_path
-  end
-
-    @user = User.find(params[:id])
+      user = User.find(params[:id])
+    unless user.id == current_user.id
+      redirect_to books_path
+    end
+      @user = User.find(params[:id])
   end
 
   def create
@@ -26,16 +25,18 @@ class UsersController < ApplicationController
   end
 
   def update
-
-     user = User.find(params[:id])
-  unless user.id == current_user.id
-    redirect_to books_path
-  end
-
     user = User.find(params[:id])
-    user.update(user_params)#ストロングパラメータ、userモデルのname,profileのカラムの保存を許可する
-    flash[:notice] = "successfully"
-    redirect_to user_path(user.id)
+    unless user.id == current_user.id
+      redirect_to books_path
+    end
+    @user = User.find(params[:id])
+    if @user.update(user_params)#ストロングパラメータ、userモデルのname,profileのカラムの保存を許可する
+      flash[:notice] = "successfully"
+      redirect_to user_path(user.id)
+    else
+      flash[:alert] = "error"
+      render :edit
+    end
   end
 
   private

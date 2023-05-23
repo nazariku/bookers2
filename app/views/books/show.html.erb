@@ -5,7 +5,9 @@
        <div class="container">
         <div class="row">
           <div class="col-md-3">
-            <%= render 'users/shared', user: current_user %>
+            
+            <%= render 'users/shared', user: @user %>
+           
           </div>
 
             <div class="col-md-8 offset-md-1">
@@ -15,9 +17,11 @@
             <tr>
               <td>
                 <%= image_tag @book.user.get_profile_image(100,100) %>
-                <br><%= link_to @book.user.name, user_path(current_user) %>
+                <br><%= link_to @book.user.name, user_path(@book.user) %>
               </td>
+              
               <td><%= @book.title %></td>
+              
               <td><%= @book.body %></td>
 
 

@@ -15,11 +15,17 @@
           </tr>
         </tbody>
       </table>
+      
+      
       <div class="row">
+        <% if @user == current_user %>
         <%= link_to edit_user_path(current_user), class: "btn btn-outline-secondary btn-block edit_user", method: :get do %>
         <i class="fas fa-user-cog"></i>
         <% end %>
+        <% end %>
       </div>
+      
+      
     </div>
     
     
@@ -38,6 +44,7 @@
 
       <div class="form-group">
         <input type="submit" name="commit" value="Create Book" class="btn btn-success" data-disable-with="Create Book">
+        <%#= f.submit 'Create Book', class:"btn btn-success" %>
       </div>
 
     <% end %>

@@ -19,11 +19,6 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
   end
 
-  def create
-   user = User.create(user_params)
-   redirect_to user_path(user.id)
-  end
-
   def update
     user = User.find(params[:id])
     unless user.id == current_user.id
